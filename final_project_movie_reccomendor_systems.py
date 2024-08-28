@@ -180,7 +180,6 @@ else:
             print(i, '.', title_from_index[0])
             i += 1
 
-pip install streamlit
 
 import streamlit as st
 import pandas as pd
