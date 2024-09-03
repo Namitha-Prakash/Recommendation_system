@@ -41,20 +41,9 @@ st.markdown(
         background-size: cover;
         background-position: center;
     }}
-    .stTitle {{
+    .stTitle, .stHeader, .stSubheader, .stText, .stMarkdown p {{
         color: red;
-    }}
-    .stHeader {{
-        color: red;
-    }}
-    .stSubheader {{
-        color: red;
-    }}
-    .stText {{
-        color: red;
-    }}
-    .stMarkdown p {{
-        color: red;
+        font-weight: bold;
     }}
     </style>
     """,
