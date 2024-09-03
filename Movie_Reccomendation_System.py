@@ -37,6 +37,8 @@ def display_movie_details(title_from_index, poster_url, plot, year, imdb_rating)
     st.markdown(f"<p style='color:{light_red_color}; font-weight:bold;'>Year: {year}</p>", unsafe_allow_html=True)
     st.markdown(f"<p style='color:{light_red_color}; font-weight:bold;'>IMDB Rating: {imdb_rating}</p>", unsafe_allow_html=True)
     st.markdown(f"<p style='color:{light_red_color}; font-weight:bold;'>Plot: {plot}</p>", unsafe_allow_html=True)
+    st.markdown(f"<h2 style='color:#FF7F7F; font-weight:bold;'>Top 5 similar movies to '{movie_name}':</h2>", unsafe_allow_html=True)
+
 
 # Streamlit app layout
 st.set_page_config(page_title="Movie Recommendation System", page_icon="🎥")
