@@ -32,7 +32,7 @@ def fetch_movie_details(movie_title):
 st.set_page_config(page_title="Movie Recommendation System", page_icon="🎥")
 
 # Add a background image
-background_image_url = "https://your-background-image-url.com"  # Replace with your actual image URL
+background_image_url = "https://media.licdn.com/dms/image/D5612AQGy6sM0SJAdxg/article-cover_image-shrink_720_1280/0/1693150322893?e=2147483647&v=beta&t=tmyCkhGahTKcBOOftyXZLhkLjtUIkqio94iGE3Y670E"  # Replace with your actual image URL
 st.markdown(
     f"""
     <style>
