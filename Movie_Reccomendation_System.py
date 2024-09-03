@@ -4,7 +4,6 @@ from sklearn.metrics.pairwise import cosine_similarity
 import difflib
 import requests
 import streamlit as st
-import os
 
 # Load the data
 df = pd.read_csv("https://github.com/YBI-Foundation/Dataset/raw/main/Movies%20Recommendation.csv")
@@ -28,18 +27,10 @@ def fetch_movie_details(movie_title):
     imdb_rating = data.get('imdbRating', 'Rating not available')
     return poster_url, plot, year, imdb_rating
 
-# Function to display movie details in white color
-def display_movie_details(title_from_index, poster_url, plot, year, imdb_rating):
-    # Display movie details in white color
-    st.markdown(f"<h3 style='color:white;'>{title_from_index}</h3>", unsafe_allow_html=True)
-    st.markdown(f"<p style='color:white;'>Year: {year}</p>", unsafe_allow_html=True)
-    st.markdown(f"<p style='color:white;'>IMDB Rating: {imdb_rating}</p>", unsafe_allow_html=True)
-    st.markdown(f"<p style='color:white;'>Plot: {plot}</p>", unsafe_allow_html=True)
-
 # Streamlit app layout
 st.set_page_config(page_title="Movie Recommendation System", page_icon="🎥")
 
-# Add a background image
+# Add a background image and set global text color
 background_image_url = "https://media.licdn.com/dms/image/D5612AQGy6sM0SJAdxg/article-cover_image-shrink_720_1280/0/1693150322893?e=2147483647&v=beta&t=tmyCkhGahTKcBOOftyXZLhkLjtUIkqio94iGE3Y670E"
 st.markdown(
     f"""
@@ -48,7 +39,16 @@ st.markdown(
         background-image: url("{background_image_url}");
         background-size: cover;
         background-position: center;
-        color: white;  /* Set default text color to white */
+        color: white; /* Set default text color to white */
+    }}
+    .stButton > button {{
+        color: white;
+    }}
+    .stTextInput > input {{
+        color: white;
+    }}
+    .stMarkdown {{
+        color: white;
     }}
     </style>
     """,
@@ -75,7 +75,7 @@ if submit_button:
             recommendation_score = list(enumerate(Similarity_Score[index_of_movie]))
             sorted_similar_movies = sorted(recommendation_score, key=lambda x: x[1], reverse=True)
             
-            st.header(f"Top 5 similar movies to '{movie_name}':")
+            st.markdown(f"<h2 style='color:white;'>Top 5 similar movies to '{movie_name}':</h2>", unsafe_allow_html=True)
             
             for i, movie in enumerate(sorted_similar_movies[:5]):
                 index = movie[0]
@@ -86,6 +86,9 @@ if submit_button:
                 with col1:
                     st.image(poster_url, use_column_width=True, width=120)  # Adjusted width for posters
                 with col2:
-                    display_movie_details(title_from_index, poster_url, plot, year, imdb_rating)
+                    st.markdown(f"<h3 style='color:white;'>{title_from_index}</h3>", unsafe_allow_html=True)
+                    st.markdown(f"<p style='color:white;'>Year: {year}</p>", unsafe_allow_html=True)
+                    st.markdown(f"<p style='color:white;'>IMDB Rating: {imdb_rating}</p>", unsafe_allow_html=True)
+                    st.markdown(f"<p style='color:white;'>Plot: {plot}</p>", unsafe_allow_html=True)
     else:
         st.error("Please enter a movie name.")
