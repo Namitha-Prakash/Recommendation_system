@@ -41,7 +41,19 @@ st.markdown(
         background-size: cover;
         background-position: center;
     }}
-    .stTitle, .stHeader, .stSubheader, .stText, .stMarkdown p {{
+    .stTitle {{
+        color: red !important;
+        font-weight: bold !important;
+    }}
+    .stTextInput > div > input {{
+        color: red !important;
+        font-weight: bold !important;
+    }}
+    .stButton > button {{
+        color: red !important;
+        font-weight: bold !important;
+    }}
+    .stMarkdown p {{
         color: red;
         font-weight: bold;
     }}
