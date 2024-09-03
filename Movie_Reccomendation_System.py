@@ -4,7 +4,6 @@ from sklearn.metrics.pairwise import cosine_similarity
 import difflib
 import requests
 import streamlit as st
-import os
 
 # Load the data
 df = pd.read_csv("https://github.com/YBI-Foundation/Dataset/raw/main/Movies%20Recommendation.csv")
@@ -41,7 +40,7 @@ st.markdown(
         background-size: cover;
         background-position: center;
     }}
-    .stTitle h1 {{
+    .title h1 {{
         color: red !important;
         font-weight: bold !important;
     }}
@@ -63,8 +62,9 @@ st.markdown('<h1 style="color:red; font-weight:bold;">🎥 Movie Recommendation 
 
 # Form styling
 with st.form(key='movie_form'):
-    movie_name = st.text_input("<span style='color:red; font-weight:bold;'>Enter your favorite movie name:</span>", unsafe_allow_html=True)
-    submit_button = st.form_submit_button(label='<span style="color:red; font-weight:bold;">Submit</span>', use_container_width=True)
+    st.markdown("<label style='color:red; font-weight:bold;'>Enter your favorite movie name:</label>", unsafe_allow_html=True)
+    movie_name = st.text_input(label="")
+    submit_button = st.form_submit_button(label='Submit')
 
 if submit_button:
     if movie_name:
