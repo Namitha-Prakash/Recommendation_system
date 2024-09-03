@@ -41,7 +41,7 @@ st.markdown(
         background-size: cover;
         background-position: center;
     }}
-    .stTitle {{
+    .sttitle {{
         color: red !important;
         font-weight: bold !important;
     }}
