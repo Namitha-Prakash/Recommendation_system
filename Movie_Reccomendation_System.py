@@ -4,6 +4,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 import difflib
 import requests
 import streamlit as st
+import os
 
 # Load the data
 df = pd.read_csv("https://github.com/YBI-Foundation/Dataset/raw/main/Movies%20Recommendation.csv")
@@ -27,12 +28,9 @@ def fetch_movie_details(movie_title):
     imdb_rating = data.get('imdbRating', 'Rating not available')
     return poster_url, plot, year, imdb_rating
 
-# Display function with styling for light red and bold
+# Function to display movie details in light red and bold
 def display_movie_details(title_from_index, poster_url, plot, year, imdb_rating):
     light_red_color = '#FF7F7F'  # Light red color code
-    
-    # Display poster
-    st.image(poster_url, use_column_width=True, width=120)  # Adjusted width for posters
     
     # Display movie details in light red and bold
     st.markdown(f"<h3 style='color:{light_red_color}; font-weight:bold;'>{title_from_index}</h3>", unsafe_allow_html=True)
@@ -40,7 +38,31 @@ def display_movie_details(title_from_index, poster_url, plot, year, imdb_rating)
     st.markdown(f"<p style='color:{light_red_color}; font-weight:bold;'>IMDB Rating: {imdb_rating}</p>", unsafe_allow_html=True)
     st.markdown(f"<p style='color:{light_red_color}; font-weight:bold;'>Plot: {plot}</p>", unsafe_allow_html=True)
 
-# Inside your form submission logic
+# Streamlit app layout
+st.set_page_config(page_title="Movie Recommendation System", page_icon="🎥")
+
+# Add a background image
+background_image_url = "https://media.licdn.com/dms/image/D5612AQGy6sM0SJAdxg/article-cover_image-shrink_720_1280/0/1693150322893?e=2147483647&v=beta&t=tmyCkhGahTKcBOOftyXZLhkLjtUIkqio94iGE3Y670E"
+st.markdown(
+    f"""
+    <style>
+    .stApp {{
+        background-image: url("{background_image_url}");
+        background-size: cover;
+        background-position: center;
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Set the title with red and bold styling
+st.markdown("<h1 style='color:#FF7F7F; font-weight:bold;'>🎥 Movie Recommendation System 🎬</h1>", unsafe_allow_html=True)
+
+with st.form(key='movie_form'):
+    movie_name = st.text_input("Enter your favorite movie name:")
+    submit_button = st.form_submit_button(label='Submit')
+
 if submit_button:
     if movie_name:
         list_of_all_titles = df['Movie_Title'].tolist()
@@ -68,38 +90,3 @@ if submit_button:
                     display_movie_details(title_from_index, poster_url, plot, year, imdb_rating)
     else:
         st.error("Please enter a movie name.")
-
-
-# Streamlit app layout
-st.set_page_config(page_title="Movie Recommendation System", page_icon="🎥")
-
-# Add a background image
-background_image_url = "https://media.licdn.com/dms/image/D5612AQGy6sM0SJAdxg/article-cover_image-shrink_720_1280/0/1693150322893?e=2147483647&v=beta&t=tmyCkhGahTKcBOOftyXZLhkLjtUIkqio94iGE3Y670E"  # Replace with your actual image URL
-st.markdown(
-    f"""
-    <style>
-    .stApp {{
-        background-image: url("{background_image_url}");
-        background-size: cover;
-        background-position: center;
-    }}
-    .title h1 {{
-        color: red !important;
-        font-weight: bold !important;
-    }}
-    .stTextInput label {{
-        color: red !important;
-        font-weight: bold !important;
-    }}
-    .stButton button {{
-        color: red !important;
-        font-weight: bold !important;
-    }}
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-# Title styling
-st.markdown('<h1 style="color:red; font-weight:bold;">🎥 Movie Recommendation System 🎬</h1>', unsafe_allow_html=True)
-
