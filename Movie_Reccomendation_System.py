@@ -5,6 +5,7 @@ import difflib
 import requests
 import streamlit as st
 import os
+
 # Load the data
 df = pd.read_csv("https://github.com/YBI-Foundation/Dataset/raw/main/Movies%20Recommendation.csv")
 features = df[['Movie_Genre', 'Movie_Keywords', 'Movie_Tagline', 'Movie_Cast', 'Movie_Director']].fillna('')
@@ -29,6 +30,22 @@ def fetch_movie_details(movie_title):
 
 # Streamlit app layout
 st.set_page_config(page_title="Movie Recommendation System", page_icon="🎥")
+
+# Add a background image
+background_image_url = "https://your-background-image-url.com"  # Replace with your actual image URL
+st.markdown(
+    f"""
+    <style>
+    .stApp {{
+        background-image: url("{background_image_url}");
+        background-size: cover;
+        background-position: center;
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 st.title("🎥 Movie Recommendation System 🎬")
 
 with st.form(key='movie_form'):
