@@ -43,12 +43,13 @@ st.markdown(
     }}
     .stButton > button {{
         color: white;
+        background-color: red; /* Set button color to red */
     }}
     .stTextInput > input {{
-        color: white;
+        color: white; /* Set text input color to white */
     }}
     .stMarkdown {{
-        color: white;
+        color: white; /* Ensure markdown text color is white */
     }}
     </style>
     """,
