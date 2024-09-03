@@ -41,6 +41,21 @@ st.markdown(
         background-size: cover;
         background-position: center;
     }}
+    .stTitle {{
+        color: red;
+    }}
+    .stHeader {{
+        color: red;
+    }}
+    .stSubheader {{
+        color: red;
+    }}
+    .stText {{
+        color: red;
+    }}
+    .stMarkdown p {{
+        color: red;
+    }}
     </style>
     """,
     unsafe_allow_html=True
