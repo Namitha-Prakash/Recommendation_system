@@ -42,8 +42,8 @@ st.markdown(
         color: white; /* Set default text color to white */
     }}
     .stButton > button {{
-        color: red; /* Set button text color to red */
-        background-color: white; /* Set button background color to white */
+        color: red !important;
+        font-weight: bold !important;
     }}
     .stTextInput > input {{
         color: white; /* Set text input color to white */
