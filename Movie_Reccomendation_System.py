@@ -41,32 +41,30 @@ st.markdown(
         background-size: cover;
         background-position: center;
     }}
-    .sttitle {{
+    .stTitle h1 {{
         color: red !important;
         font-weight: bold !important;
     }}
-    .stTextInput > div > input {{
+    .stTextInput label {{
         color: red !important;
         font-weight: bold !important;
     }}
-    .stButton > button {{
+    .stButton button {{
         color: red !important;
         font-weight: bold !important;
-    }}
-    .stMarkdown p {{
-        color: red;
-        font-weight: bold;
     }}
     </style>
     """,
     unsafe_allow_html=True
 )
 
-st.title("🎥 Movie Recommendation System 🎬")
+# Title styling
+st.markdown('<h1 style="color:red; font-weight:bold;">🎥 Movie Recommendation System 🎬</h1>', unsafe_allow_html=True)
 
+# Form styling
 with st.form(key='movie_form'):
-    movie_name = st.text_input("Enter your favorite movie name:")
-    submit_button = st.form_submit_button(label='Submit')
+    movie_name = st.text_input("<span style='color:red; font-weight:bold;'>Enter your favorite movie name:</span>", unsafe_allow_html=True)
+    submit_button = st.form_submit_button(label='<span style="color:red; font-weight:bold;">Submit</span>', use_container_width=True)
 
 if submit_button:
     if movie_name:
