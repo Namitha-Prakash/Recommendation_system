@@ -28,6 +28,14 @@ def fetch_movie_details(movie_title):
     imdb_rating = data.get('imdbRating', 'Rating not available')
     return poster_url, plot, year, imdb_rating
 
+# Function to display movie details in white color
+def display_movie_details(title_from_index, poster_url, plot, year, imdb_rating):
+    # Display movie details in white color
+    st.markdown(f"<h3 style='color:white;'>{title_from_index}</h3>", unsafe_allow_html=True)
+    st.markdown(f"<p style='color:white;'>Year: {year}</p>", unsafe_allow_html=True)
+    st.markdown(f"<p style='color:white;'>IMDB Rating: {imdb_rating}</p>", unsafe_allow_html=True)
+    st.markdown(f"<p style='color:white;'>Plot: {plot}</p>", unsafe_allow_html=True)
+
 # Streamlit app layout
 st.set_page_config(page_title="Movie Recommendation System", page_icon="🎥")
 
@@ -40,14 +48,15 @@ st.markdown(
         background-image: url("{background_image_url}");
         background-size: cover;
         background-position: center;
+        color: white;  /* Set default text color to white */
     }}
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# Set the title with red and bold styling
-st.markdown("<h1 style='color:#FF7F7F; font-weight:bold;'>🎥 Movie Recommendation System 🎬</h1>", unsafe_allow_html=True)
+# Set the title with white color
+st.markdown("<h1 style='color:white;'>🎥 Movie Recommendation System 🎬</h1>", unsafe_allow_html=True)
 
 with st.form(key='movie_form'):
     movie_name = st.text_input("Enter your favorite movie name:")
@@ -80,15 +89,3 @@ if submit_button:
                     display_movie_details(title_from_index, poster_url, plot, year, imdb_rating)
     else:
         st.error("Please enter a movie name.")
-
-# Function to display movie details in light red and bold
-def display_movie_details(title_from_index, poster_url, plot, year, imdb_rating):
-    light_red_color = '#FF7F7F'  # Light red color code
-    
-    # Display movie details in light red and bold
-    st.markdown(f"<h3 style='color:{light_red_color}; font-weight:bold;'>{title_from_index}</h3>", unsafe_allow_html=True)
-    st.markdown(f"<p style='color:{light_red_color}; font-weight:bold;'>Year: {year}</p>", unsafe_allow_html=True)
-    st.markdown(f"<p style='color:{light_red_color}; font-weight:bold;'>IMDB Rating: {imdb_rating}</p>", unsafe_allow_html=True)
-    st.markdown(f"<p style='color:{light_red_color}; font-weight:bold;'>Plot: {plot}</p>", unsafe_allow_html=True)
-    st.markdown(f"<h2 style='color:#FF7F7F; font-weight:bold;'>Top 5 similar movies to '{movie_name}':</h2>", unsafe_allow_html=True)
-
