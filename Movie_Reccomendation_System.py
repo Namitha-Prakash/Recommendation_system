@@ -42,11 +42,15 @@ st.markdown(
         color: white; /* Set default text color to white */
     }}
     .stButton > button {{
-        color: red !important;
-        font-weight: bold !important;
+        color: red; /* Set button text color to red */
+        background-color: white; /* Set button background color to white */
     }}
     .stTextInput > input {{
         color: white; /* Set text input color to white */
+        background-color: black; /* Optional: Set background color of text input to make text stand out */
+    }}
+    .stTextInput > div > input {{
+        color: white; /* Ensure text input text color is white */
     }}
     .stMarkdown {{
         color: white; /* Ensure markdown text color is white */
