@@ -39,7 +39,7 @@ st.markdown(
         background-image: url("{background_image_url}");
         background-size: cover;
         background-position: center;
-        color: white; /* Set default text color to white */
+         /* Set default text color to white */
     }}
     .stButton button {{
         color: red !important;
